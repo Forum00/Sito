@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storico - Forum Giovani</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://github.com/Forum00/Sito/blob/main/favicon-32x32.png?raw=true" type="image/png">
+    <style>
+        .scroll-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+        }
+        .scroll-item {
+            display: inline-block;
+            min-width: 150px;
+            cursor: pointer;
+        }
+        .scroll-item:hover {
+            transform: scale(1.1);
+        }
+        .active-item {
+            color: #1d4ed8;
+            border-bottom: 2px solid #1d4ed8;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Hero Section -->
+    <section class="bg-hero text-center text-black py-40" style="background-image: url('https://via.placeholder.com/1500x800/6c757d/FFFFFF?text=Forum+Giovani'); background-size: cover; background-position: center;">
+        <h1 class="text-5xl font-bold mb-4">Benvenuti nella storia del Forum Giovani di Cesa</h1>
+        <p class="text-xl mb-6">Unisciti a noi per costruire il futuro della comunità giovanile.</p>
+        <a href="index.html" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300">
+            Scopri di più
+        </a>
+    </section>
+
+    <!-- Timeline Scrollabile -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Ordine Cronologico</h2>
+            
+            <div class="scroll-container flex justify-center space-x-6 overflow-x-auto py-4">
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2000')">2000</span>
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2005')">2005</span>
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2010')">2010</span>
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2015')">2015</span>
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2020')">2020</span>
+                <span class="scroll-item text-xl font-semibold px-4 py-2 hover:text-blue-600" onclick="selectYear('2025')">2025</span>
+            </div>
+            
+            <div id="event-details" class="mt-8 text-lg text-gray-600">
+                <p>Seleziona un anno per vedere i dettagli dell'evento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Forum Giovani. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <!-- Script per Gestione Timeline -->
+    <script>
+        const events = {
+            '2000': 'Nel 2000 è stato fondato il primo Forum Giovani di Cesa.',
+            '2005': 'Nel 2005 il forum ha introdotto nuovi programmi educativi.',
+            '2010': 'Nel 2010 si è tenuta la prima conferenza giovanile internazionale.',
+            '2015': 'Nel 2015 è stata avviata l\'iniziativa di volontariato comunitario.',
+            '2020': 'Nel 2020 il forum ha sostenuto progetti innovativi digitali.',
+            '2025': 'Nel 2025 celebriamo 25 anni di attività e successi!'
+        };
+
+        function selectYear(year) {
+            // Rimuove la classe attiva da tutti gli elementi
+            document.querySelectorAll('.scroll-item').forEach(item => {
+                item.classList.remove('active-item');
+            });
+
+            // Aggiunge la classe attiva all'elemento selezionato
+            event.target.classList.add('active-item');
+
+            // Mostra i dettagli dell'evento corrispondente
+            const details = document.getElementById('event-details');
+            details.innerHTML = `<p>${events[year]}</p>`;
+        }
+    </script>
+</body>
+</html>
